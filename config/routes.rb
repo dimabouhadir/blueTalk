@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'channels#index'
+
   resources :users
   resources :u_sers
   resources :piconets
