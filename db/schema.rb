@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171130160126) do
+ActiveRecord::Schema.define(version: 20171130200359) do
 
-  create_table "channels", force: :cascade do |t|
+  create_table "Channels", force: :cascade do |t|
     t.string "name"
-    t.integer "number_of_users"
     t.integer "piconet_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -35,9 +34,9 @@ ActiveRecord::Schema.define(version: 20171130160126) do
     t.integer "channel_id"
     t.integer "master_id"
     t.integer "timer"
-    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "number_of_users"
   end
 
   create_table "users", force: :cascade do |t|

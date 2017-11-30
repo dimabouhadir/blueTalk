@@ -5,8 +5,10 @@ class UsersController < ApplicationController
   # GET /users.json
   #GET /users?channelid=1 -- to show only the users in that channel
   def index
-    if params[:channelid]
-      @users = User.where(channel_id: params[:channelid])
+
+    if params[:piconetid]
+      @piconet = Piconet.find_by(id: user_params[:piconet_id])
+      @piconet.users
     else
       @users = User.all
     end
@@ -37,7 +39,7 @@ class UsersController < ApplicationController
   # POST /users.json
   #TODO add constraint number of users to channel are less than 7
   def create
-    channel = Channel.find_by(id: user_params[:channel_id]).increment!(:number_of_users)
+    # channel = Channel.find_by(id: user_params[:channel_id]).increment!(:number_of_users)
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
@@ -83,6 +85,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :phone_number, :channel_id)
+      params.require(:user).permit(:name, :phone_number)
     end
 end

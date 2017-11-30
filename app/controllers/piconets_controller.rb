@@ -7,6 +7,12 @@ class PiconetsController < ApplicationController
     @piconets = Piconet.all
   end
 
+
+  # user id / piconet id
+  def join
+    @piconet = Piconet.find_by(id: user_params[:piconet_id]).increment!(:number_of_users)
+    @piconet.users << User.find(params[:user_id])
+  end
   # GET /piconets/1
   # GET /piconets/1.json
   def show
