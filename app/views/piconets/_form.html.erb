@@ -1,0 +1,37 @@
+<%= form_with(model: piconet, local: true) do |form| %>
+  <% if piconet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(piconet.errors.count, "error") %> prohibited this piconet from being saved:</h2>
+
+      <ul>
+      <% piconet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :channel_id %>
+    <%= form.number_field :channel_id, id: :piconet_channel_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :master_id %>
+    <%= form.number_field :master_id, id: :piconet_master_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :timer %>
+    <%= form.number_field :timer, id: :piconet_timer %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :piconet_name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

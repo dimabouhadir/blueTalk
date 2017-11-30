@@ -1,0 +1,32 @@
+<%= form_with(model: channel, local: true) do |form| %>
+  <% if channel.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(channel.errors.count, "error") %> prohibited this channel from being saved:</h2>
+
+      <ul>
+      <% channel.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :channel_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :number_of_users %>
+    <%= form.number_field :number_of_users, id: :channel_number_of_users %>
+  </div>
+
+  <div class="field">
+    <%= form.label :piconet_id %>
+    <%= form.number_field :piconet_id, id: :channel_piconet_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: MyText
+  source: 1
+  destination: 1
+  piconet_id: 1
+  received: false
+  to_from_master: false
+
+two:
+  content: MyText
+  source: 1
+  destination: 1
+  piconet_id: 1
+  received: false
+  to_from_master: false

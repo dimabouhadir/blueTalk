@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @message.content %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @message.source %>
+</p>
+
+<p>
+  <strong>Destination:</strong>
+  <%= @message.destination %>
+</p>
+
+<p>
+  <strong>Piconet:</strong>
+  <%= @message.piconet_id %>
+</p>
+
+<p>
+  <strong>Received:</strong>
+  <%= @message.received %>
+</p>
+
+<p>
+  <strong>To from master:</strong>
+  <%= @message.to_from_master %>
+</p>
+
+<%= link_to 'Edit', edit_message_path(@message) %> |
+<%= link_to 'Back', messages_path %>
