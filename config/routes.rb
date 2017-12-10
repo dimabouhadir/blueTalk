@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'channels#index'
-
+  get '/users/addUser', to: 'users#addUser'
   resources :users
   resources :u_sers
   resources :piconets

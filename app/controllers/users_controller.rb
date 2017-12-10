@@ -42,6 +42,12 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   #TODO add constraint number of users to channel are less than 7
+  def addUser
+
+    @user = User.new(:name => params[:name], :phone_number => params[:phone_number])
+    @user.save
+  end
+
   def create
     # channel = Channel.find_by(id: user_params[:channel_id]).increment!(:number_of_users)
     @user = User.new(user_params)
