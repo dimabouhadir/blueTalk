@@ -37,7 +37,8 @@ class PiconetsController < ApplicationController
     @piconet.save
 
     channel = Channel.find_by(:id => params[:channel_id])
-    channel[:piconet_id] = @piconet[:id] 
+    channel[:piconet_id] = @piconet[:id]
+    channel.save
   end
 
   def create
