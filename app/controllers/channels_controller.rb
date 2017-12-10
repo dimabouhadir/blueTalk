@@ -33,6 +33,12 @@ class ChannelsController < ApplicationController
   def edit
   end
 
+  def createChannel
+
+    @channel = Channel.new(:name => params[:name], :piconet_id => params[:piconet_id])
+    @user.save
+  end
+
   # POST /channels
   # POST /channels.json
   def create

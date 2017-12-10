@@ -13,7 +13,6 @@ class PiconetsController < ApplicationController
   def join
     @piconet = Piconet.find_by(id: user_params[:piconet_id]).increment!(:number_of_users)
     @piconet.users << User.find(params[:user_id])
-
   end
   # GET /piconets/1
   # GET /piconets/1.json
@@ -32,6 +31,11 @@ class PiconetsController < ApplicationController
   # POST /piconets
   # POST /piconets.json
   #params= channelid =
+  def createPiconet
+    @piconet = Piconet.new(:channel_id => params[:channel_id], :master_id => params[:master_id],:number_of_users => params[:number_of_users])
+    @piconet.save
+  end
+
   def create
     if User.exists?(id: piconet_params[:master_id])
       @piconet = Piconet.new(piconet_params)
