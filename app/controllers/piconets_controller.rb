@@ -35,6 +35,9 @@ class PiconetsController < ApplicationController
     @user = User.find_by(:phone_number => params[:master_id])
     @piconet = Piconet.new(:channel_id => params[:channel_id], :master_id => @user[:id],:number_of_users => params[:number_of_users])
     @piconet.save
+
+    channel = Channel.find_by(:id => params[:channel_id])
+    channel[:piconet_id] = @piconet[:id] 
   end
 
   def create
