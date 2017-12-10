@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'channels#index'
   get '/users/addUser', to: 'users#addUser'
   get '/channels/createChannel', to: 'channels#createChannel'
-  get '/piconets/createPiconet', to: 'piconetss#createPiconet'
+  get '/piconets/createPiconet', to: 'piconets#createPiconet'
   resources :users
   resources :u_sers
   resources :piconets
