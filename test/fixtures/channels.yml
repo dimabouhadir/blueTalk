@@ -2,10 +2,10 @@
 
 one:
   name: MyString
-  number_of_users: 1
+  # number_of_users: 1
   piconet_id: 1
 
 two:
   name: MyString
-  number_of_users: 1
+  # number_of_users: 1
   piconet_id: 1

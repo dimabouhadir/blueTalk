@@ -3,5 +3,5 @@ class Channel < ApplicationRecord
   belongs_to :piconet, optional: true
 
   validates :name, presence: true
-  validates :number_of_users, presence: true
+  # validates :number_of_users, presence: true
 end
