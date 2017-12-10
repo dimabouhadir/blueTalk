@@ -3,11 +3,9 @@
 one:
   channel_id: 1
   master_id: 1
-  timer: 1
   name: MyString
 
 two:
   channel_id: 1
   master_id: 1
-  timer: 1
   name: MyString

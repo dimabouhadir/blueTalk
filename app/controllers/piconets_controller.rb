@@ -5,7 +5,7 @@ class PiconetsController < ApplicationController
   # GET /piconets.json
   def index
     @piconets = Piconet.all
-    
+
   end
 
 
@@ -81,6 +81,6 @@ class PiconetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def piconet_params
-      params.require(:piconet).permit(:channel_id, :master_id, :timer)
+      params.require(:piconet).permit(:channel_id, :master_id, )
     end
 end

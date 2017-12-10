@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20171210122927) do
     t.integer "master_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "number_of_users"
+    t.integer "number_of_users", default: 1
   end
 
   create_table "users", force: :cascade do |t|
