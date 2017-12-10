@@ -4,7 +4,11 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   #GET /users?channelid=1 -- to show only the users in that channel
+  #/user --> send all users
+  #/user?
+
   def index
+    @users = User.all
     render json: @users
     # if params[:piconetid]
     #   @piconet = Piconet.find_by(id: params[:piconetid])
