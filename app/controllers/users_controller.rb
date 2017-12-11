@@ -21,7 +21,6 @@ class UsersController < ApplicationController
     # render json: @users
   end
 
-
   # GET /users/1
   # GET /users/1.json
 

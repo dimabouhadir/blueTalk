@@ -28,20 +28,17 @@ class PiconetsController < ApplicationController
 
   # GET /piconets
   # GET /piconets.json
-  #params= channelid = &user_id 
+  #params= channelid = &master_id(phone_number)&numberofusers
   def createPiconet
     user = User.find_by(:phone_number => params[:master_id])
     @piconet = Piconet.new(:channel_id => params[:channel_id], :master_id => user[:id],:number_of_users => params[:number_of_users])
-
     @piconet.save
-
     channel = Channel.find_by(:id => params[:channel_id])
     channel[:piconet_id] = @piconet[:id]
     channel[:piconet_id] = @piconet[:id]
-   channel.save
+    channel.save
     user[:piconet_id] = @piconet[:id]
     user.save
-    # piconet.users << user
   end
 
   def create

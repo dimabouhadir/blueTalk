@@ -5,18 +5,32 @@ class MessagesController < ApplicationController
   # GET /messages.json
   #if only the unread messages:   append params unread = 1
   #if all received messages :   append params unread = 0
+  #messages?src=&dest=&channel_id
   def index
+    @source = User.find_by(:phone_number => params[:src])
+    @destination = User.find_by(:phone_number => params[:dest])
+    @channel = Channel.find_by(:id => params[:channel_id])
+
     @messages = Message.all     #TODO render only the messges  between source destination
     if params[:src]
-      @messages = @messages.where(source: params[:src])
+      @messages = @messages.where(source: @source[:id])
     end
     if params[:dest]
-      @messages = @messages.where(destination: params[:dest])
+      @messages = @messages.where(destination: @destination[:id])
     end
-    if params[:unread]
-      # byebug
-      @messages = @messages.where(received: params[:unread]== "0")
-    end
+    # if params[:unread]
+    #   # byebug
+    #   @messages = @messages.where(received: params[:unread]== "0")
+    # end
+  end
+  #/messages/forward?channel_id
+  def forward
+    @piconet = Piconet.find_by(:channel_id => params[:channel_id])
+    @message= Message.where(:piconet_id => @piconet[:id])
+    @message = @message.first
+    @message[:to_from_master]=1
+    @message.save
+
   end
 
   # GET /messages/1
