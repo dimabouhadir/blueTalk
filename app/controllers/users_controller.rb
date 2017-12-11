@@ -13,6 +13,7 @@ class UsersController < ApplicationController
       @channel = Channel.find_by(id: params[:channel_id])
       @piconet = Piconet.find_by(id: @channel[:piconet_id])
       @users = @users.where(piconet_id: @piconet[id]
+      end
     # else
     #   @users = User.all
     # end
