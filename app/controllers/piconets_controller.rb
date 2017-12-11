@@ -26,9 +26,9 @@ class PiconetsController < ApplicationController
   def edit
   end
 
-  # POST /piconets
-  # POST /piconets.json
-  #params= channelid =
+  # GET /piconets
+  # GET /piconets.json
+  #params= channelid = &user_id 
   def createPiconet
     user = User.find_by(:phone_number => params[:master_id])
     @piconet = Piconet.new(:channel_id => params[:channel_id], :master_id => user[:id],:number_of_users => params[:number_of_users])

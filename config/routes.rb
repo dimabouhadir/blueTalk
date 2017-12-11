@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/channels/createChannel', to: 'channels#createChannel'
   get '/piconets/createPiconet', to: 'piconets#createPiconet'
   get '/users/join', to: 'users#join'
+  get'/users/leavePiconet', to: 'users#leavePiconet'
   resources :users
   resources :u_sers
   resources :piconets

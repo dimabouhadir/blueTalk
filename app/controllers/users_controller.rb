@@ -52,9 +52,29 @@ class UsersController < ApplicationController
   def join
     @piconet = Piconet.find_by(:id => params[:piconet_id]).increment!(:number_of_users)
     @piconet.users << User.find_by(:phone_number => params[:user_id])
-
+    @piconet.save
     user = User.find_by(:phone_number => params[:user_id])
     user[:piconet_id] = params[:piconet_id]
+    user.save
+  end
+
+  #users/leavePiconet?user_id=()&channel_id=
+  def leavePiconet
+    user = User.find_by(:phone_number => params[:user_id])
+
+    channel = Channel.find_by(:id => params[:channel_id])
+    channel[:piconet_id] = 0
+    channel.save
+
+    user[:piconet_id] = 0
+    user.save
+
+    @piconet = Piconet.find_by(:channel_id => params[:channel_id]).decrement!(:number_of_users)
+    if @piconet[:number_of_users] == 0
+      @piconet.destroy
+    else
+      @piconet.save
+    end
   end
 
   def create

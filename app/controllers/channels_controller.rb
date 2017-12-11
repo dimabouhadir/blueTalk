@@ -5,16 +5,8 @@ class ChannelsController < ApplicationController
   # GET /channels.json
   #IT SHOWS ONLY AVAILABLE CHANNELS where piconet = 0
   def index
-  # @channels = Channel.includes(:piconet).all
-  @channels = Channel.all
-  render json: @channels, include: [:piconet]
-    #.where(:piconets => {number_of_users: 0}).all
-
-
-#     @channels = Channel.all.map do |u|
-#      { :name => u.name, :number_of_users => u.piconet_id==1?Piconet.find(params[u.piconet_id])[:number_of_users]:0, :id =>u.id, :piconet_id => 0, :created_at => "0", :updated_at => "0"}
-# end
-  #  @channels = Channel.where(piconet_id: 0)
+    @channels = Channel.all
+    render json: @channels, include: [:piconet]
   end
 
   # GET /channels/1
