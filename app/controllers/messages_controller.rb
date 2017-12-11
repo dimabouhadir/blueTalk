@@ -46,7 +46,15 @@ class MessagesController < ApplicationController
   # GET /messages/1/edit
   def edit
   end
+  #src destination channelid content
+  def sendMessage
+    @source = User.find_by(:phone_number => params[:src])
+    @destination = User.find_by(:phone_number => params[:dest])
+    @channel = Channel.find_by(:id => params[:channel_id])
 
+    @message= Message.new(:received => false, :to_from_master => false, :source => @source[:id],:destination => @destination[:id], :content => params[:content], :piconet_id => @channel[:piconet_id])
+    @message.save
+  end
   # POST /messages
   # POST /messages.json
   def create

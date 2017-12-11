@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   get '/piconets/createPiconet', to: 'piconets#createPiconet'
   get '/users/join', to: 'users#join'
   get'/users/leavePiconet', to: 'users#leavePiconet'
-  get'/users/addMessage', to: 'users#addMessage'
-  get '/messages/forward', to: 'messages#forward'
+  get'/messages/sendMessage', to: 'messages#sendMessage'
+  get '/messages/forward', to: 'messages#forwa'
   resources :users
   resources :u_sers
   resources :piconets
