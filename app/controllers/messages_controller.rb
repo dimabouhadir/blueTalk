@@ -18,10 +18,9 @@ class MessagesController < ApplicationController
     if params[:dest]
       @messages = @messages.where(destination: @destination[:id])
     end
-    # if params[:unread]
-    #   # byebug
-    #   @messages = @messages.where(received: params[:unread]== "0")
-    # end
+    if params[:unread]
+      @messages = @messages.where(received: params[:unread]== "0")
+    end
   end
   #/messages/forward?channel_id
   def forward
