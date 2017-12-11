@@ -9,10 +9,10 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    render json: @users
-    # if params[:piconetid]
-    #   @piconet = Piconet.find_by(id: params[:piconetid])
-    #   @users = @piconet.users
+    if params[:channel_id]
+      @channel = Channel.find_by(id: params[:channel_id])
+      @piconet = Piconet.find_by(id: @channel[:piconet_id])
+      @users = @users.where(piconet_id: @piconet[id]
     # else
     #   @users = User.all
     # end
