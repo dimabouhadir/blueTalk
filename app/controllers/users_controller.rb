@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if params[:channel_id]
       @channel = Channel.find_by(id: params[:channel_id])
       @piconet = Piconet.find_by(id: @channel[:piconet_id])
-      @users = @users.where(piconet_id: @piconet[id])
+      @users = @users.where(piconet_id: @piconet[:id])
     end
     render json: @users
     # else
