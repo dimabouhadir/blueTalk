@@ -43,9 +43,16 @@ class UsersController < ApplicationController
   # POST /users.json
   #TODO add constraint number of users to channel are less than 7
   def addUser
+    user = User.new(:name => params[:name], :phone_number => params[:phone_number])
+    user.save
+  end
+#  /users/join?user_id=..&piconet_id=
+  def join
+    @piconet = Piconet.find_by(:id => params[:piconet_id]).increment!(:number_of_users)
+    @piconet.users << User.find_by(:phone_number => params[:user_id])
 
-    @user = User.new(:name => params[:name], :phone_number => params[:phone_number])
-    @user.save
+    user = User.find_by(:phone_number => params[:user_id])
+    user[:piconet_id] = params[:piconet_id]
   end
 
   def create

@@ -5,15 +5,13 @@ class PiconetsController < ApplicationController
   # GET /piconets.json
   def index
     @piconets = Piconet.all
+    render json: @piconets, include: [:users]
 
   end
 
 
   # user id / piconet id
-  def join
-    @piconet = Piconet.find_by(id: user_params[:piconet_id]).increment!(:number_of_users)
-    @piconet.users << User.find(params[:user_id])
-  end
+
   # GET /piconets/1
   # GET /piconets/1.json
   def show
@@ -32,13 +30,18 @@ class PiconetsController < ApplicationController
   # POST /piconets.json
   #params= channelid =
   def createPiconet
-    @user = User.find_by(:phone_number => params[:master_id])
-    @piconet = Piconet.new(:channel_id => params[:channel_id], :master_id => @user[:id],:number_of_users => params[:number_of_users])
+    user = User.find_by(:phone_number => params[:master_id])
+    @piconet = Piconet.new(:channel_id => params[:channel_id], :master_id => user[:id],:number_of_users => params[:number_of_users])
+
     @piconet.save
 
     channel = Channel.find_by(:id => params[:channel_id])
     channel[:piconet_id] = @piconet[:id]
-    channel.save
+    channel[:piconet_id] = @piconet[:id]
+   channel.save
+    user[:piconet_id] = @piconet[:id]
+    user.save
+    # piconet.users << user
   end
 
   def create
