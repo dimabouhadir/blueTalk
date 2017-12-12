@@ -13,10 +13,10 @@ class MessagesController < ApplicationController
 
     @messages = Message.all     #TODO render only the messges  between source destination
     if params[:src]
-      @messages = @messages.where(source: @source[:id]).or(@messages.where(destination: @source[:id]))
+      @messages = @messages.where(source: @source[:id]) #.or(@messages.where(destination: @source[:id]))
     end
     if params[:dest]
-      @messages = @messages.where(destination: @destination[:id].or(@messages.where(source: @destination[:id]))
+      @messages = @messages.where(destination: @destination[:id]) #.or(@messages.where(source: @destination[:id]))
     end
     if params[:unread]
       @messages = @messages.where(received: params[:unread]== "0")
