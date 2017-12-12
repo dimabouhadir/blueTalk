@@ -13,14 +13,15 @@ class MessagesController < ApplicationController
 
     @messages = Message.all     #TODO render only the messges  between source destination
     if params[:src]
-      @messages = @messages.where(source: @source[:id])
+      @messages = @messages.where(source: @source[:id] || destination: @source[:id])
     end
     if params[:dest]
-      @messages = @messages.where(destination: @destination[:id])
+      @messages = @messages.where(destination: @destination[:id] || source: @destination[:id])
     end
     if params[:unread]
       @messages = @messages.where(received: params[:unread]== "0")
     end
+    render json: @messages
   end
   #/messages/forward?channel_id
   def forward
